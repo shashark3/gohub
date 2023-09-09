@@ -15,7 +15,7 @@ import (
 )
 
 // 初始化DB 和 ORM
-func SetuoDB() {
+func SetupDB() {
 	var dbConfig gorm.Dialector
 	//从 连接配置中找到对应的数据库并构建 DSN（数据源） 信息
 	switch config.Get("database.connection") {
