@@ -11,8 +11,9 @@ import (
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/sqlite"
 
+	"gohub/pkg/logger"
+
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 )
 
 // 初始化DB 和 ORM
@@ -39,7 +40,7 @@ func SetupDB() {
 	}
 
 	//连接到数据库，并设置ORM的日志模式
-	database.Connect(dbConfig, logger.Default.LogMode(logger.Info))
+	database.Connect(dbConfig, logger.NewGormLogger())
 
 	//设置最大空闲连接数
 	database.SQLDB.SetMaxIdleConns(config.GetInt("database.mysql.max_idle_connections"))
