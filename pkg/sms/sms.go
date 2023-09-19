@@ -20,7 +20,7 @@ var once sync.Once
 
 var internalSMS *SMS
 
-func NewSms() *SMS {
+func NewSMS() *SMS {
 	once.Do(func() {
 		internalSMS = &SMS{
 			Driver: &aliyun{},

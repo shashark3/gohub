@@ -42,6 +42,9 @@ func main() {
 	// 注册一个路由
 	bootstrap.SetUpRoute(r)
 
+	//发送短信
+	//verifycode.NewVerifyCode().SendSMS("13508652605")
+
 	// 运行服务
 	err := r.Run(":" + config.Get("app.port"))
 	if err != nil {
