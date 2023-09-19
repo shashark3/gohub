@@ -31,9 +31,9 @@ func setup404Handler(router *gin.Engine) {
 	router.NoRoute(func(ctx *gin.Context) {
 		acceptString := ctx.Request.Header.Get("Accept")
 		if strings.Contains(acceptString, "text/html") {
-			response.Abort404(ctx, "页面走丢了")
+			response.Abort404(ctx, "404NotFound页面走丢了")
 		} else {
-			response.Abort404(ctx, "路由未定义")
+			response.Abort404(ctx, "404NotFound路由未定义")
 		}
 	})
 

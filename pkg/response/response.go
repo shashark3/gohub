@@ -49,7 +49,7 @@ func CreatedJSON(c *gin.Context, data interface{}) {
 // Abort404 响应 404，未传参 msg 时使用默认消息
 func Abort404(c *gin.Context, msg ...string) {
 	c.AbortWithStatusJSON(http.StatusNotFound, gin.H{
-		"message": defaultMessage("数据不存在，请确定请求正确", msg...),
+		"message": defaultMessage("数据不存在，请确定请求正确.", msg...),
 	})
 }
 
