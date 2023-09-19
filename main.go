@@ -36,6 +36,9 @@ func main() {
 	//初始化DB
 	bootstrap.SetupDB()
 
+	//初始化Redis
+	bootstrap.SetupRedis()
+
 	// 注册一个路由
 	bootstrap.SetUpRoute(r)
 
