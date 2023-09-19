@@ -3,8 +3,8 @@ package bootstrap
 //程序初始化
 import (
 	"gohub/app/http/middlewares"
+	"gohub/pkg/response"
 	"gohub/routes"
-	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -31,12 +31,9 @@ func setup404Handler(router *gin.Engine) {
 	router.NoRoute(func(ctx *gin.Context) {
 		acceptString := ctx.Request.Header.Get("Accept")
 		if strings.Contains(acceptString, "text/html") {
-			ctx.String(http.StatusNotFound, "页面走丢了")
+			response.Abort404(ctx, "页面走丢了")
 		} else {
-			ctx.JSON(http.StatusNotFound, gin.H{
-				"error_Code":    404,
-				"error_message": "路由未定义，请确认url和请求方法是否正确",
-			})
+			response.Abort404(ctx, "路由未定义")
 		}
 	})
 
