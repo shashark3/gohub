@@ -14,7 +14,7 @@ func init() {
 			// debug 模式下的过期时间，方便本地开发调试
 			"debug_expire_time": 10080,
 			// 本地开发环境验证码使用 debug_code
-			"debug_code": 123456,
+			"debug_code": 23456,
 
 			// 方便本地和 API 自动测试
 			"debug_phone_prefix": "000",

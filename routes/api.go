@@ -19,6 +19,8 @@ func RegisterAPIroutes(router *gin.Engine) {
 			vcc := new(auth.VerifyCodeController)
 			//显示验证码
 			authGroup.POST("/verify_code/captcha", vcc.ShowCaptcha)
+
+			authGroup.POST("/verify_code/phone", vcc.SendUsingPhone)
 		}
 	}
 }
