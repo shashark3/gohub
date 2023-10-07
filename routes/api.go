@@ -14,6 +14,10 @@ func RegisterAPIroutes(router *gin.Engine) {
 			suc := new(auth.SignupController)
 			authGroup.POST("/signup/phone/exist", suc.IsPhoneExist)
 
+			authGroup.POST("/signup/using-phone", suc.SignupUsingPhone)
+
+			authGroup.POST("/signup/using-email", suc.SignupUsingEmail)
+
 			authGroup.POST("/signup/email/exist", suc.IsEmailExist)
 
 			vcc := new(auth.VerifyCodeController)
@@ -23,6 +27,7 @@ func RegisterAPIroutes(router *gin.Engine) {
 			authGroup.POST("/verify_code/phone", vcc.SendUsingPhone)
 
 			authGroup.POST("/verify_code/email", vcc.SendUsingEmail)
+
 		}
 	}
 }
