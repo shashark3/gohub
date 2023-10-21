@@ -28,6 +28,10 @@ func RegisterAPIroutes(router *gin.Engine) {
 
 			authGroup.POST("/verify_code/email", vcc.SendUsingEmail)
 
+			lgc := new(auth.LoginController)
+
+			authGroup.POST("/login/using-phone", lgc.LoginByPhone)
+
 		}
 	}
 }
