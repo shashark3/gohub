@@ -3,9 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"gohub/app/http/middlewares"
 	"gohub/bootstrap"
 	btsConfig "gohub/config"
 	"gohub/pkg/config"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -42,8 +44,17 @@ func main() {
 	// 注册一个路由
 	bootstrap.SetUpRoute(r)
 
+	//r.GET("/test_auth", middlewares.AuthJWT(), func(ctx *gin.Context) {
+	//	userModel := auth.CurrentUser(ctx)
+	//	response.Data(ctx, userModel)
+	//})
+
 	//发送短信
 	//verifycode.NewVerifyCode().SendSMS("13508652605")
+
+	r.GET("test_guest", middlewares.GuestJWT(), func(ctx *gin.Context) {
+		ctx.String(http.StatusOK, "hello guest")
+	})
 
 	// 运行服务
 	err := r.Run(":" + config.Get("app.port"))
