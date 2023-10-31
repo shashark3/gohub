@@ -36,6 +36,10 @@ func RegisterAPIroutes(router *gin.Engine) {
 
 			authGroup.POST("/login/refresh-token", lgc.RefreshToken)
 
+			pc := new(auth.PasswordController)
+			//重置密码
+			authGroup.POST("/password-reset/using-phone", pc.ResetByphone)
+
 		}
 	}
 }
